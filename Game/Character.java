@@ -19,21 +19,30 @@ public class Character implements CharacterTemplate {
     public void save() {
 
     }
-    public List<Object> retrieve_char_dat() {
-        List<Object> dataset = new ArrayList<>();
-        dataset.add(this.id);
-        dataset.add(this.name);
-        dataset.add(this.height);
+    public Map<String, Object> retrieve_char_dat() {
+        Map<String, Object> dataset = new HashMap<>();
+        dataset.put("id", this.id);
+        dataset.put("name", this.name);
+        dataset.put("height", this.height);
         return dataset;
     }
     public void print_data() {
         System.out.println(this.height[0]);
-        for (Object data : this.retrieve_char_dat()) {
-            switch (data.getClass().getName()) {
-                case "int":
-                    System.out.println(data);
-                case data | data.
-                default:
+        for (Map.Entry<String, Object> data : this.retrieve_char_dat().entrySet()) {
+            switch (data.getValue()) {
+                case Integer i -> {
+                    System.out.println(i);
+                }
+                case String s -> {
+                    System.out.println(s);
+                }
+                case Object[] Oa -> {
+
+                }
+                case int[] ia -> {
+
+                }
+                default ->
                     System.out.println(data);
             }
             System.out.println(data);
