@@ -2,28 +2,28 @@ package Game;
 
 import java.util.*;
 
-public class Character implements CharacterTemplate {
+public class Character {
     private final Integer id;
     public String name;
     public Integer[] height = new Integer[2];
+    public String damage;
 
     public Character(Map<String, Object> params) {
         this.id = 0;
         this.name = (String)params.get("name");
         this.height = (Integer[]) params.get("height");
+        this.damage = (String) params.get("damage");
     }
     public void update(Map<String, Object> params) {
         this.name = (String)params.get("name");
         this.height = (Integer[])params.get("height");
+        this.damage = (String) params.get("damage");
     }
     public void save() {
 
     }
     public Map<String, Object> retrieve_char_dat() {
-        Map<String, Object> dataset = new HashMap<>();
-        dataset.put("id", this.id);
-        dataset.put("name", this.name);
-        dataset.put("height", this.height);
+        Map<String, Object> dataset = new HashMap<>(Map.ofEntries(Map.entry("id", this.id), Map.entry("name", this.name), Map.entry("height", this.height), Map.entry("damage", this.damage)));
         return dataset;
     }
     public void print_data() {
