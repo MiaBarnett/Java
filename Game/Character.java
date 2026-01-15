@@ -3,18 +3,18 @@ package Game;
 import java.util.*;
 
 public class Character implements CharacterTemplate {
-    private final int id;
+    private final Integer id;
     public String name;
-    public int[] height;
+    public Integer[] height = new Integer[2];
 
-    public Character(Object[] params) {
+    public Character(Map<String, Object> params) {
         this.id = 0;
-        this.name = (String)params[0];
-        this.height = new int[] {(Integer)params[1], (Integer)params[2]};
+        this.name = (String)params.get("name");
+        this.height = (Integer[]) params.get("height");
     }
-    public void update(Object[] params) {
-        this.name = (String)params[0];
-        this.height = new int[] {(int)params[1], (int)params[2]};
+    public void update(Map<String, Object> params) {
+        this.name = (String)params.get("name");
+        this.height = (Integer[])params.get("height");
     }
     public void save() {
 
@@ -27,25 +27,32 @@ public class Character implements CharacterTemplate {
         return dataset;
     }
     public void print_data() {
-        System.out.println(this.height[0]);
         for (Map.Entry<String, Object> data : this.retrieve_char_dat().entrySet()) {
             switch (data.getValue()) {
+                case Object[] Ia -> {
+                    System.out.print(data.getKey() + "=");
+                    for (Object object : Ia) {
+                        switch (object) {
+                            case Integer i -> {
+                                System.out.print(i + " ");
+                            }
+                            case String s -> {
+                                System.out.print(s + " ");
+                            }
+                            default ->
+                                System.out.print((String)object + " ");
+                        }
+                    }
+                }
                 case Integer i -> {
                     System.out.println(i);
                 }
                 case String s -> {
                     System.out.println(s);
                 }
-                case Object[] Oa -> {
-
-                }
-                case int[] ia -> {
-
-                }
                 default ->
                     System.out.println(data);
             }
-            System.out.println(data);
         }
     }
 }

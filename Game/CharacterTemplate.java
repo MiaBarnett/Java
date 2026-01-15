@@ -1,9 +1,9 @@
 package Game;
 
-import java.util.Map;
+import java.util.*;
 
 public interface CharacterTemplate {
-    public void update(Object[] params);
+    public void update(Map<String, Object> params);
     public void save();
     Map<String, Object> retrieve_char_dat();
 }
