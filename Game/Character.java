@@ -1,37 +1,39 @@
 package Game;
 
 import java.util.*;
+import Game.Character.charRoster;
 
 public class Character {
-    private final Integer id;
-    public String name;
-    public Integer[] height = new Integer[2];
-    public String damage;
+    private Integer id;
+    public String[] name; //variable size
+    public Integer[] height; //2 fields, feet and inches
+    public Integer[] stats; //10 fields, stat block
 
     public Character(Map<String, Object> params) {
-        this.id = 0;
-        this.name = (String)params.get("name");
+        this.id = charRoster.length; //used for indexing characters in character selection screen and char-editing methods
+        this.name = (String[]) params.get("name");
         this.height = (Integer[]) params.get("height");
-        this.damage = (String) params.get("damage");
+        this.stats = (Integer[]) params.get("stats");
     }
     public void update(Map<String, Object> params) {
-        this.name = (String)params.get("name");
-        this.height = (Integer[])params.get("height");
-        this.damage = (String) params.get("damage");
+        this.name = (String[]) params.get("name");
+        this.height = (Integer[]) params.get("height");
+        this.stats = (Integer[]) params.get("stats");
     }
     public void save() {
 
     }
     public Map<String, Object> retrieve_char_dat() {
-        Map<String, Object> dataset = new HashMap<>(Map.ofEntries(Map.entry("id", this.id), Map.entry("name", this.name), Map.entry("height", this.height), Map.entry("damage", this.damage)));
+        LinkedHashMap<String, Object> dataset = new LinkedHashMap<>(Map.ofEntries(Map.entry("id", this.id), Map.entry("name", this.name), Map.entry("height", this.height), Map.entry("stats", this.stats)));
         return dataset;
     }
     public void print_data() {
+        System.out.println(this.stats.length);
         for (Map.Entry<String, Object> data : this.retrieve_char_dat().entrySet()) {
             switch (data.getValue()) {
-                case Object[] Ia -> {
+                case Object[] Oa -> {
                     System.out.print(data.getKey() + "=");
-                    for (Object object : Ia) {
+                    for (Object object : Oa) {
                         switch (object) {
                             case Integer i -> {
                                 System.out.print(i + " ");
@@ -43,6 +45,7 @@ public class Character {
                                 System.out.print((String)object + " ");
                         }
                     }
+                    System.out.println();
                 }
                 case Integer i -> {
                     System.out.println(i);
