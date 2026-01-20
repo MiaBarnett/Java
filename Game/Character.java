@@ -30,39 +30,27 @@ public class Character {
         this.id += 1;
     }
     
-    public Map<String, Object> retrieve_char_dat() {
+    public Map<String, Object> retrieveCharDat() {
         LinkedHashMap<String, Object> dataset = new LinkedHashMap<>(Map.ofEntries(Map.entry("id", this.id), Map.entry("name", this.name), Map.entry("height", this.height), Map.entry("stats", this.stats)));
         return dataset;
     }
 
-    public void print_data() {
-        for (Map.Entry<String, Object> data : this.retrieve_char_dat().entrySet()) {
-            switch (data.getValue()) {
-                case Object[] Oa -> {
-                    System.out.print(data.getKey() + " = ");
-                    for (Object object : Oa) {
-                        switch (object) {
-                            case Integer i -> {
-                                System.out.print(i + " ");
-                            }
-                            case String s -> {
-                                System.out.print(s + " ");
-                            }
-                            default ->
-                                System.out.print((String)object + " ");
-                        }
-                    }
-                    System.out.println();
-                }
-                case Integer i -> {
-                    System.out.println(i);
-                }
-                case String s -> {
-                    System.out.println(s);
-                }
-                default ->
-                    System.out.println(data);
-            }
+    public void printData() {
+        System.out.println("Id: " + this.id);
+        System.out.print("Name:");
+        for (String s : this.name) {
+            System.out.print(" " + s);
         }
+        System.out.println();
+        System.out.print("Height:");
+        for (Integer s : this.height) {
+            System.out.print(" " + s);
+        }
+        System.out.println();
+        System.out.print("Stats:");
+        for (Integer s : this.stats) {
+            System.out.print(" " + s);
+        }
+        System.out.println();
     }
 }
