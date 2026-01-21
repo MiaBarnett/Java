@@ -1,16 +1,18 @@
-package Game;
+package Game.Classes;
 
 import module java.base;
 
-public class Character {
+import Game.Main;
+
+public class Player {
     public Integer id;
     public String[] name; //variable size
     public Integer[] height; //2 fields, feet and inches
     public Integer[] stats; //10 fields, stat block
     public String[] inventory; //30 fields, inventory slots
 
-    public Character(Map<String, Object> params) {
-        this.id = Main.roster.charRoster.size(); //used for indexing characters in character selection screen and char-editing methods
+    public Player(Map<String, Object> params) {
+        this.id = Main.roster.playerRoster.size(); //used for indexing Players in Player selection screen and char-editing methods
         this.name = (String[]) params.get("name");
         this.height = (Integer[]) params.get("height");
         this.stats = (Integer[]) params.get("stats");
