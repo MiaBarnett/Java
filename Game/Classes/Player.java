@@ -23,7 +23,9 @@ public class Player {
         this.height = (Integer[]) params.get("height");
         this.stats = (Integer[]) params.get("stats");
     }
-
+    public void updateName(String[] arg) {
+        this.name = arg;
+    }
     public void idDown() {
         this.id -= 1;
     }
